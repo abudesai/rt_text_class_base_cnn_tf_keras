@@ -1,0 +1,40 @@
+[
+  {
+    "name": "activation",
+    "short_desc": "Activation function in hidden layers of the neural network. One of two types: [ 'relu', 'tanh' ]",
+    "default": "tanh",
+    "type": "categorical",
+    "categorical_vals": ["relu", "tanh"],
+    "run_HPO": true
+  },
+  {
+    "name": "embedding_size",
+    "short_desc": "Word embedding size",
+    "default": 50,
+    "type": "int",
+    "search_type": "uniform",
+    "range_low": 20,
+    "range_high": 70,
+    "run_HPO": true
+  },
+  {
+    "name": "latent_dim",
+    "short_desc": "Latent dim size in RNN unit",
+    "default": 20,
+    "type": "int",
+    "search_type": "uniform",
+    "range_low": 10,
+    "range_high": 50,
+    "run_HPO": true
+  },
+  {
+    "name": "lr",
+    "short_desc": "Learning rate for optimizer.",
+    "default": 5e-5,
+    "type": "real",
+    "range_low": 1e-5,
+    "range_high": 1e-3,
+    "search_type": "log-uniform",
+    "run_HPO": true
+  }
+]
