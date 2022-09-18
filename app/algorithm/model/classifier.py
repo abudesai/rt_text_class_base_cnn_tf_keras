@@ -20,7 +20,7 @@ from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, Callbac
 from tensorflow.nn import softmax
 
 
-MODEL_NAME = "text_class_CNN_tf_keras"
+MODEL_NAME = "text_class_base_cnn_tf_keras"
 
 model_params_fname = "model_params.save"
 model_wts_fname = "model_wts.save"
@@ -81,10 +81,11 @@ class EarlyStoppingAtMinLoss(Callback):
             print("Epoch %05d: early stopping" % (self.stopped_epoch + 1))
 
 
+
 class Classifier(): 
     
     def __init__(self, vocab_size, max_seq_len, num_target_classes, 
-                 embedding_size, latent_dim, lr, activation='tanh'):
+                 embedding_size=30, latent_dim=32, lr=1e-4, activation='tanh', **kwargs):
         '''
         V: vocabulary size
         T: length of sequences
