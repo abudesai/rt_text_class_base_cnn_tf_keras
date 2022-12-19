@@ -1,11 +1,16 @@
-FROM python:3.8.0-slim as builder
+FROM tensorflow/tensorflow:2.11.0-gpu
 
-
-RUN apt-get -y update && apt-get install -y --no-install-recommends \
+RUN apt-get -y update && \
+        apt-get -y install gcc mono-mcs && \
+        apt-get install -y --no-install-recommends \
          wget \
          nginx \
          ca-certificates \
     && rm -rf /var/lib/apt/lists/*
+
+RUN set -xe \
+    && apt-get -y install python3-pip
+RUN pip install --upgrade pip
 
 
 COPY ./requirements.txt .
@@ -32,4 +37,4 @@ RUN chown -R 1000:1000 /opt/app/  && \
     chown -R 1000:1000 /var/log/nginx/  && \
     chown -R 1000:1000 /var/lib/nginx/
 
-USER 1000
+USER 1000 
