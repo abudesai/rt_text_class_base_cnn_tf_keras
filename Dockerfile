@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 
 COPY app ./opt/app
 
-WORKDIR /opt/app
+WORKDIR /opt/app 
 
 
 ENV PYTHONUNBUFFERED=TRUE
@@ -24,6 +24,12 @@ ENV PATH="/opt/app:${PATH}"
 
 
 RUN chmod +x train &&\
-    chmod +x test &&\
+    chmod +x predict &&\
     chmod +x tune &&\
     chmod +x serve 
+
+RUN chown -R 1000:1000 /opt/app/  && \
+    chown -R 1000:1000 /var/log/nginx/  && \
+    chown -R 1000:1000 /var/lib/nginx/
+
+USER 1000
