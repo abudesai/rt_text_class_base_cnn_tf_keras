@@ -69,12 +69,7 @@ class DataPreProcessor():
        
     
     def save(self, model_path): 
-        try: 
-            joblib.dump(self, os.path.join(model_path, PREPROCESSOR_FNAME))   
-        except: 
-            raise Exception(f'''
-                Error saving the preprocessor. 
-                Does the file path exist {model_path}?''')  
+        joblib.dump(self, os.path.join(model_path, PREPROCESSOR_FNAME))  
         return   
     
     
@@ -84,28 +79,18 @@ class DataPreProcessor():
         if not os.path.exists(file_path_and_name):
             raise Exception(f'''Error: No trained preprocessor found. 
             Expected to find file in path: {model_path}''')            
-        try: 
-            preprocessor = joblib.load(file_path_and_name)     
-        except: 
-            raise Exception(f'''
-                Error loading the preprocessor. 
-                Do you have the right trained preprocessor at {file_path_and_name}?''')
-        
+        preprocessor = joblib.load(file_path_and_name)             
         return preprocessor 
     
-    
+
+def save_preprocessor(preprocessor, model_path):
+    preprocessor.save(model_path)
     
 def load_preprocessor(file_path):
     file_path_and_name = os.path.join(file_path, PREPROCESSOR_FNAME)
     if not os.path.exists(file_path_and_name):
         raise Exception(f'''Error: No trained preprocessor found. 
         Expected to find model files in path: {file_path_and_name}''')        
-    try: 
-        preprocessor = joblib.load(file_path_and_name)     
-    except: 
-        raise Exception(f'''
-            Error loading the preprocessor. 
-            Do you have the right trained preprocessor at {file_path_and_name}?''')
-    
+    preprocessor = DataPreProcessor.load(file_path)     
     return preprocessor 
     
