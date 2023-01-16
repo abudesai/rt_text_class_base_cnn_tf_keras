@@ -1,9 +1,11 @@
 Convolutional Neural Network in TensorFlow/Keras for Text Classification - Base problem category as per Ready Tensor specifications.
 
 - text classification
+- convolutional neural network
+- neural network
 - tensorflow
 - keras
-- neural network
+- nltk
 - pandas
 - numpy
 - activation
@@ -14,8 +16,6 @@ Convolutional Neural Network in TensorFlow/Keras for Text Classification - Base 
 - nginx
 - uvicorn
 - docker
-- tf-idf
-- nltk
 
 This Convolutional Neural Network (CNN) is comprised of 7 layers which includes embedding, global max pooling, dropout, and convolutional layers. The model uses the Adam Optimizer to evaluate the performance of the model.
 
